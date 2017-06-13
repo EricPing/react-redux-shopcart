@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "./node_modules/.bin/eslint ."
+    "eslint": "./node_modules/.bin/eslint ./src/* ./src/**/*"
   },
   "keywords": [
     "react",
@@ -18,12 +18,14 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.0.0",
     "eslint-config-google": "^0.8.0",
+    "eslint-plugin-react": "^7.0.1",
     "file-loader": "^0.11.2",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",

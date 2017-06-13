@@ -1,3 +1,11 @@
 module.exports = {
-    "extends": "google"
+    "extends": [
+        "google",
+        "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    }
 };
