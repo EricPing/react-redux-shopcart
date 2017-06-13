@@ -16,6 +16,18 @@ module.exports = {
                 },
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/
+            },
+            {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(scss|sass)$/,
+                loaders: ['sass-loader'],
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loaders: ['file-loader']
             }
         ]
     }
