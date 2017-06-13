@@ -2,20 +2,20 @@ module.exports = {
     entry: './app/app.jsx',
     output: {
         path: __dirname,
-        filename: './public/bundle.js'        
+        filename: './public/bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
     module: {
         loaders: [
             {
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'env']
+                    presets: ['react', 'env'],
                 },
                 test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/
+                exclude: /(node_modules|bower_components)/,
             },
             {
                 test: /\.css$/,
@@ -27,8 +27,8 @@ module.exports = {
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
-                loaders: ['file-loader']
-            }
-        ]
-    }
+                loaders: ['file-loader'],
+            },
+        ],
+    },
 };
