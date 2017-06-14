@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 /**
  * @return {component} The component of product list
  */
 class ProductList extends React.Component {
     /**
      * @return {component}
-     * @param {string} title 
-     * @param {string} detail 
+     * @param {int} id
+     * @param {string} title
+     * @param {string} detail
      */
     productDetail(id, title, detail) {
         return (
@@ -22,11 +24,10 @@ class ProductList extends React.Component {
     /**
      * @return {component}
      */
-    render() {        
-
-        let product_list = this.props.product_list;
-
-        let products = product_list.map((item) => this.productDetail(item.id, item.title, item.detail));
+    render() {
+        let productList = this.props.productList;
+        let products = productList.map((item) =>
+                        this.productDetail(item.id, item.title, item.detail));
         return (
             <div>
                 <h2>商品</h2>
@@ -34,8 +35,12 @@ class ProductList extends React.Component {
                     {products}
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default ProductList
+ProductList.propTypes = {
+    productList: PropTypes.array,
+};
+
+export default ProductList;

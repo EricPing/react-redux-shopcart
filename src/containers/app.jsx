@@ -5,19 +5,19 @@ import Order from '../components/order';
 let data = [
     {
         id: 1,
-        title: "A",
-        detail: "B",
+        title: 'A',
+        detail: 'B',
     },
     {
         id: 2,
-        title: "A",
-        detail: "B",
+        title: 'A',
+        detail: 'B',
     },
     {
         id: 3,
-        title: "A",
-        detail: "B",
-    }
+        title: 'A',
+        detail: 'B',
+    },
 ];
 /**
  * @return {compoment} The main compoment of App.
@@ -29,8 +29,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>購物車</h1>                
-                <ProductList product_list={data}/>
+                <h1>購物車</h1>
+                <ProductList productList={data}/>
                 <Order/>
             </div>
         );

@@ -2,7 +2,7 @@ import React from 'react';
 /**
  * @return {component} The component of order
  */
-class Order extends React.Component { 
+class Order extends React.Component {
     /**
      * @return {component}
      */
@@ -18,7 +18,7 @@ class Order extends React.Component {
                             <th>數量</th>
                             <th>價錢</th>
                             <th>小計</th>
-                        </tr>                        
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -31,8 +31,8 @@ class Order extends React.Component {
                     </tbody>
                 </table>
             </div>
-        )
+        );
     }
 }
 
-export default Order
+export default Order;
