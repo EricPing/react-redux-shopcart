@@ -6,17 +6,44 @@ let data = [
     {
         id: 1,
         title: 'A',
-        detail: 'B',
+        img: 'https://unsplash.it/400/300/?random&1',
+        price: 15,
+        discount: 5,
     },
     {
         id: 2,
         title: 'A',
-        detail: 'B',
+        img: 'https://unsplash.it/400/300/?random&2',
+        price: 20,
+        discount: 5,
     },
     {
         id: 3,
         title: 'A',
-        detail: 'B',
+        img: 'https://unsplash.it/400/300/?random&3',
+        price: 25,
+        discount: 5,
+    },
+        {
+        id: 4,
+        title: 'A',
+        img: 'https://unsplash.it/400/300/?random&1',
+        price: 15,
+        discount: 5,
+    },
+    {
+        id: 5,
+        title: 'A',
+        img: 'https://unsplash.it/400/300/?random&2',
+        price: 20,
+        discount: 5,
+    },
+    {
+        id: 6,
+        title: 'A',
+        img: 'https://unsplash.it/400/300/?random&3',
+        price: 25,
+        discount: 5,
     },
 ];
 /**
