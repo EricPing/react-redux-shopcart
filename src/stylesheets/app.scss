@@ -1,0 +1,10 @@
+.panel-footer {
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        display: inline;
+        padding-top: 8px;
+    }
+}
