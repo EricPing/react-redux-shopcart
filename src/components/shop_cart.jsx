@@ -1,15 +1,15 @@
 import React from 'react';
 /**
- * @return {component} The component of order
+ * @return {component} The component of shopcart
  */
-class Order extends React.Component {
+class ShopCart extends React.Component {
     /**
      * @return {component}
      */
     render() {
         return (
             <div>
-                <h2>訂單明細</h2>
+                <h2>購物車</h2>
                 <table className="table">
                     <thead>
                         <tr>
@@ -63,4 +63,4 @@ class Order extends React.Component {
     }
 }
 
-export default Order;
+export default ShopCart;
