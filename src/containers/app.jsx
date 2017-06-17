@@ -57,8 +57,14 @@ class App extends React.Component {
         return (
             <div className="container">
                 <h1>購物車</h1>
-                <ProductList productList={data}/>
-                <Order/>
+                <div className="row">
+                    <div className="col-md-6">
+                        <ProductList productList={data}/>
+                    </div>
+                    <div className="col-md-6">
+                        <Order/>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -14,7 +14,7 @@ class ProductList extends React.Component {
      */
     productDetail(id, title, img, price, discount) {
         return (
-            <div key={id} className="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+            <div key={id} className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div className="panel panel-primary">
                     <div className="panel-heading">{title}</div>
                     <div className="panel-body">
@@ -45,7 +45,7 @@ class ProductList extends React.Component {
         return (
             <div>
                 <h2>商品</h2>
-                <div className="row">
+                <div className="row" id="product-list">
                     {products}
                 </div>
             </div>
