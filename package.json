@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "./node_modules/.bin/eslint ./src/*.jsx ./src/**/*.jsx"
+    "eslint": "./node_modules/.bin/eslint ./src/*.js* ./src/**/*.js* --fix"
   },
   "keywords": [
     "react",
@@ -22,6 +22,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.0.0",
     "eslint-config-google": "^0.8.0",
@@ -40,6 +41,6 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
-    "redux": "^3.6.0"
+    "redux": "^3.7.0"
   }
 }
