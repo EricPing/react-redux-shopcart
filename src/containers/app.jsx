@@ -30,7 +30,7 @@ class App extends React.Component {
                         <ProductList {...this.props.productStore}/>
                     </div>
                     <div className="col-md-6">
-                        <ShopCart  {...this.props.shopcartStore}/>
+                        <ShopCart {...this.props.shopcartStore}/>
                     </div>
                 </div>
             </div>
@@ -39,6 +39,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+    shopcartStore: PropTypes.object.isRequired,
     productStore: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
 };

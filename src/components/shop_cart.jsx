@@ -1,12 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 /**
  * @return {component} The component of shopcart
  */
 class ShopCart extends React.Component {
+     /**
+     * @return {component}
+     * @param {object} product
+     * @param {int} amount
+     */
+    itemDetail(product, amount) {
+        return (
+            <tr>
+                <td>1</td>
+                <td>{product.title}</td>
+                <td>
+                    <select value={amount.toString()} className="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td>{amount}</td>
+                <td>{(product.price - product.discount) * amount}</td>
+                <td>
+                    <button className="btn btn-danger">
+                        <i className="fa fa-times" aria-hidden="true"></i> 刪除
+                    </button>
+                </td>
+            </tr>
+        );
+    }
+
     /**
      * @return {component}
      */
     render() {
+        let sum = 0;
+        let shopcartList = this.props.shopcart_list.map((item) => itemDetail(item.product, item.amount));
+        for (let i = 0; i < this.props.shopcart_list.length; i++) {
+            let item = this.props.shopcart_list[i];
+            sum += (item.product.price - product.discount) * item.amount;
+        }
+
         return (
             <div>
                 <h2>購物車</h2>
@@ -27,7 +65,7 @@ class ShopCart extends React.Component {
                             <td></td>
                             <td></td>
                             <td><b>總計</b></td>
-                            <td>1000</td>
+                            <td>{sum}</td>
                             <td>
                                 <button className="btn btn-success">
                                     <i className="fa fa-shopping-cart" aria-hidden="true"></i> 結帳
@@ -36,31 +74,17 @@ class ShopCart extends React.Component {
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>哈利波特 - 神秘的魔法石</td>
-                            <td>
-                                <select className="form-control">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </td>
-                            <td>5</td>
-                            <td>25</td>
-                            <td>
-                                <button className="btn btn-danger">
-                                    <i className="fa fa-times" aria-hidden="true"></i> 刪除
-                                </button>
-                            </td>
-                        </tr>
+                        {shopcartList}
                     </tbody>
                 </table>
             </div>
         );
     }
 }
+
+ShopCart.propTypes = {
+    shopcart_list: PropTypes.array.isRequired,
+    is_loading: PropTypes.bool.isRequired,
+};
 
 export default ShopCart;

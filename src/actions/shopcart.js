@@ -1,5 +1,5 @@
 import {GETTING_SHOPCART_LIST,
-        GET_SHOPCART_LIST_SUCCESS } from '../constants/actionTypes';
+        GET_SHOPCART_LIST_SUCCESS} from '../constants/actionTypes';
 /**
  * 這邊使用setTimeout是因為localhost載入資料很快，為了做到Loading的效果，所以這邊延長時間
  * @return {function} async function
