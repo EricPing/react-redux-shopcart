@@ -41,12 +41,24 @@ class ProductList extends React.Component {
             let {id, title, img, price, discount} = item;
             return this.productDetail(id, title, img, price, discount);
         });
+        
 
         return (
             <div>
                 <h2>商品</h2>
                 <div className="row" id="product-list">
-                    {products}
+                    {(() => {
+                        if (this.props.is_loading) {
+                            return (
+                                <div id="loading">
+                                    <h3>Loading...</h3>
+                                    <i className="fa fa-circle-o-notch fa-spin fa-5x fa-fw"></i>
+                                </div>
+                            );
+                        }
+
+                        return products;
+                    })()}
                 </div>
             </div>
         );
@@ -55,6 +67,7 @@ class ProductList extends React.Component {
 
 ProductList.propTypes = {
     product_list: PropTypes.array,
+    is_loading: PropTypes.bool
 };
 
 export default ProductList;

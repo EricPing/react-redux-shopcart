@@ -57,11 +57,14 @@ function mapDispatchToProps(dispatch) {
   return {
     getProducts: () => {
         dispatch({type: GETTING_PRODUCT_LIST});
-        fetch('/products.json')
-            .then((response) => response.json())
-            .then((productList) => {
-                return dispatch({type: GET_PRODUCT_LIST_SUCCESS, product_list: productList});
-            });
+        setTimeout(()=>{
+            fetch('/products.json')
+                .then((response) => response.json())
+                .then((productList) => {
+                    return dispatch({type: GET_PRODUCT_LIST_SUCCESS, product_list: productList});
+                });
+        }, 1500);
+        
     },
   };
 }
