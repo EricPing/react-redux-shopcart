@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ProductList from '../components/product_list';
 import ShopCart from '../components/shop_cart';
-import * as productActions from '../actions/productAction';
+import actions from '../actions';
 
 /**
  * @return {compoment} The main compoment of App.
@@ -56,7 +56,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(productActions, dispatch),
+    actions: bindActionCreators(actions, dispatch),
     dispatch,
   };
 }
