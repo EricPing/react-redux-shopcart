@@ -21,6 +21,20 @@ class Order extends React.Component {
                             <th>動作</th>
                         </tr>
                     </thead>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>                            
+                            <td><b>總計</b></td>
+                            <td>1000</td>
+                            <td>
+                                <button className="btn btn-success">
+                                    <i className="fa fa-shopping-cart" aria-hidden="true"></i> 結帳
+                                </button>
+                            </td>
+                        </tr>
+                    </tfoot>
                     <tbody>
                         <tr>
                             <td>1</td>
@@ -38,11 +52,11 @@ class Order extends React.Component {
                             <td>25</td>
                             <td>
                                 <button className="btn btn-danger">
-                                    <i className="fa fa-times" aria-hidden="true"></i>
+                                    <i className="fa fa-times" aria-hidden="true"></i> 刪除
                                 </button>
                             </td>
                         </tr>
-                    </tbody>
+                    </tbody>                    
                 </table>
             </div>
         );
