@@ -8,8 +8,9 @@ class ProductList extends React.Component {
      * @return {component}
      * @param {int} id
      * @param {string} title
-     * @param {string} detail
+     * @param {string} img
      * @param {float} price
+     * @param {float} discount
      */
     productDetail(id, title, img, price, discount) {
         return (
@@ -21,7 +22,9 @@ class ProductList extends React.Component {
                     </div>
                     <div className="panel-footer">
                         <p>{`原價:$${price}，特價$${price-discount}`}</p>
-                        <button className="btn btn-default pull-right"><i className="fa fa-plus" aria-hidden="true"></i> 加入</button>
+                        <button className="btn btn-default pull-right">
+                            <i className="fa fa-plus" aria-hidden="true"></i> 加入
+                        </button>
                         <div className="clearfix"></div>
                     </div>
                 </div>

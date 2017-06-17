@@ -18,15 +18,29 @@ class Order extends React.Component {
                             <th>數量</th>
                             <th>價錢</th>
                             <th>小計</th>
+                            <th>動作</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
                             <td>玉米</td>
-                            <td>5</td>
+                            <td>
+                                <select className="form-control">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
                             <td>5</td>
                             <td>25</td>
+                            <td>
+                                <button className="btn btn-danger">
+                                    <i className="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
