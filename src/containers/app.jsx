@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
 import ProductList from '../components/product_list';
 import ShopCart from '../components/shop_cart';
 
@@ -15,7 +18,7 @@ class App extends React.Component {
                 <h1>購物車</h1>
                 <div className="row">
                     <div className="col-md-6">
-                        <ProductList productList={[]}/>
+                        <ProductList product_list={this.props.product_list}/>
                     </div>
                     <div className="col-md-6">
                         <ShopCart/>
@@ -26,4 +29,16 @@ class App extends React.Component {
     }
 }
 
-export default App;
+App.propTypes = {
+    product_list: PropTypes.array,
+};
+
+/**
+ * @param {object} state
+ * @return {object}
+ */
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(App);

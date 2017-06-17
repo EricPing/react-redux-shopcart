@@ -36,7 +36,7 @@ class ProductList extends React.Component {
      * @return {component}
      */
     render() {
-        let productList = this.props.productList;
+        let productList = this.props.product_list;
         let products = productList.map((item) => {
             let {id, title, img, price, discount} = item;
             return this.productDetail(id, title, img, price, discount);
@@ -54,7 +54,7 @@ class ProductList extends React.Component {
 }
 
 ProductList.propTypes = {
-    productList: PropTypes.array,
+    product_list: PropTypes.array,
 };
 
 export default ProductList;
