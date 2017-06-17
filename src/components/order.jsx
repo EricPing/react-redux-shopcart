@@ -25,7 +25,7 @@ class Order extends React.Component {
                         <tr>
                             <td></td>
                             <td></td>
-                            <td></td>                            
+                            <td></td>
                             <td><b>總計</b></td>
                             <td>1000</td>
                             <td>
@@ -56,7 +56,7 @@ class Order extends React.Component {
                                 </button>
                             </td>
                         </tr>
-                    </tbody>                    
+                    </tbody>
                 </table>
             </div>
         );
