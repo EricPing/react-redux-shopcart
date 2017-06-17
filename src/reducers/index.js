@@ -1,1 +1,7 @@
-export {default as productData} from './productData';
+import productData from './productData';
+import {combineReducers} from 'redux';
+export default combineReducers(
+    {
+        productStore: productData,
+    }
+);

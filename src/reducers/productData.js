@@ -17,15 +17,12 @@ export default function productReducer(state = initialState, action) {
     switch (action.type) {
         case GET_PRODUCT_LIST_SUCCESS:
             state = {
-                ...state,
+                ...action,
                 is_loading: false,
             };
             break;
         case GETTING_PRODUCT_LIST:
-            state = {
-                ...state,
-                is_loading: true,
-            };
+            state = initialState;
             break;
     }
 
