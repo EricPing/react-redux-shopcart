@@ -1,7 +1,7 @@
 import {
     GET_PRODUCT_LIST_SUCCESS,
     GETTING_PRODUCT_LIST,
-} from '../constaints/actionTypes';
+} from '../constants/actionTypes';
 
 let initialState = {
     product_list: [],
