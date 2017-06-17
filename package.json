@@ -4,9 +4,9 @@
   "description": "React + Redux + Shopcart Example",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "./node_modules/.bin/webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "./node_modules/.bin/eslint ./src/* ./src/**/*"
+    "eslint": "./node_modules/.bin/eslint ./src/*.jsx ./src/**/*.jsx"
   },
   "keywords": [
     "react",
@@ -27,6 +27,7 @@
     "eslint-config-google": "^0.8.0",
     "eslint-plugin-react": "^7.0.1",
     "file-loader": "^0.11.2",
+    "node-sass": "^4.5.3",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "webpack": "^2.6.1",

@@ -1,0 +1,15 @@
+.panel-footer {
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        display: inline;
+        padding-top: 8px;
+    }
+}
+
+#product-list{ 
+    height:90vh;
+    overflow-y: scroll;
+}
