@@ -1,9 +1,10 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {GETTING_PRODUCT_LIST, GET_PRODUCT_LIST_SUCCESS} from '../constants/actionTypes';
 import ProductList from '../components/product_list';
 import ShopCart from '../components/shop_cart';
+import * as productActions from '../actions/productAction';
 
 /**
  * @return {compoment} The main compoment of App.
@@ -13,7 +14,7 @@ class App extends React.Component {
      *
      */
     componentDidMount() {
-        this.props.getProducts();
+        this.props.actions.getProducts();
     }
 
     /**
@@ -37,8 +38,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    productStore: PropTypes.object,
-    getProducts: PropTypes.func,
+    productStore: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
 };
 
 /**
@@ -55,17 +56,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    getProducts: () => {
-        dispatch({type: GETTING_PRODUCT_LIST});
-        setTimeout(()=>{
-            fetch('/products.json')
-                .then((response) => response.json())
-                .then((productList) => {
-                    return dispatch({type: GET_PRODUCT_LIST_SUCCESS, product_list: productList});
-                });
-        }, 1500);
-        
-    },
+    actions: bindActionCreators(productActions, dispatch),
+    dispatch,
   };
 }
 

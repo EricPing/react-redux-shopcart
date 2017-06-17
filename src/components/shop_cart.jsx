@@ -38,7 +38,7 @@ class ShopCart extends React.Component {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>玉米</td>
+                            <td>哈利波特 - 神秘的魔法石</td>
                             <td>
                                 <select className="form-control">
                                     <option value="1">1</option>

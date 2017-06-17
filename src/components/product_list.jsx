@@ -41,7 +41,7 @@ class ProductList extends React.Component {
             let {id, title, img, price, discount} = item;
             return this.productDetail(id, title, img, price, discount);
         });
-        
+
 
         return (
             <div>
@@ -67,7 +67,7 @@ class ProductList extends React.Component {
 
 ProductList.propTypes = {
     product_list: PropTypes.array,
-    is_loading: PropTypes.bool
+    is_loading: PropTypes.bool,
 };
 
 export default ProductList;
