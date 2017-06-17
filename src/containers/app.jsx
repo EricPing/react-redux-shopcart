@@ -15,6 +15,7 @@ class App extends React.Component {
      */
     componentDidMount() {
         this.props.actions.getProducts();
+        this.props.actions.getShopList();
     }
 
     /**
@@ -29,7 +30,7 @@ class App extends React.Component {
                         <ProductList {...this.props.productStore}/>
                     </div>
                     <div className="col-md-6">
-                        <ShopCart/>
+                        <ShopCart  {...this.props.shopcartStore}/>
                     </div>
                 </div>
             </div>
