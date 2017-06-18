@@ -15,7 +15,7 @@ class ShopCart extends React.Component {
     itemDetail(index, product, amount, total) {
         return (
             <tr key={index}>
-                <td>1</td>
+                <td>{index + 1}</td>
                 <td>{product.title}</td>
                 <td>
                     <select value={amount.toString()} className="form-control"
