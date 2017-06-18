@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
     "font-awesome": "^4.7.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",

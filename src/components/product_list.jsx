@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingView from './loading_view';
+import classnames from 'classnames';
 /**
  * @return {component} The component of product list
  */
