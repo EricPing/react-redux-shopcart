@@ -25,21 +25,27 @@ export default function product(state = initialState, action) {
             state = initialState;
             break;
         case ENABLE_ADD_TO_SHOPCART:
-            state = {
-                ...state,
-                is_loading: false,
-            };
+            {
+                state = {
+                    ...state,
+                    is_loading: false,
+                };
 
-            delete(state.product_list[action.index].is_disabled);
-            break;
+                let product = state.product_list.filter(({id}) => id == action.id)[0];
+                delete(product.is_disabled);
+                break;
+            }
         case DISABLE_ADD_TO_SHOPCART:
-            state = {
-                ...state,
-                is_loading: false,
-            };
+            {
+                state = {
+                    ...state,
+                    is_loading: false,
+                };
 
-            state.product_list[action.index].is_disabled = true;
-            break;
+                let product = state.product_list.filter(({id}) => id == action.id)[0];
+                product.is_disabled = true;
+                break;
+            }
     }
 
     return state;

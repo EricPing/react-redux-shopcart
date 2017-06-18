@@ -8,10 +8,9 @@ import classnames from 'classnames';
 class ProductList extends React.Component {
     /**
      * @return {component}
-     * @param {int} index
      * @param {object} product
      */
-    productDetail(index, product) {
+    productDetail(product) {
         let {id, title, img, price, discount} = product;
         let isDisabled = product.is_disabled;
         let options = {};
@@ -29,7 +28,7 @@ class ProductList extends React.Component {
                     <div className="panel-footer">
                         <p>{`原價:$${price}，特價$${price-discount}`}</p>
                         <button className={classnames('btn', 'btn-default', ' pull-right')} {...options}
-                            onClick={() => this.props.actions.addToShopcart(index, product, 1)}>
+                            onClick={() => this.props.actions.addToShopcart(product.id, product, 1)}>
                             <i className="fa fa-plus" aria-hidden="true"></i> 加入
                         </button>
                         <div className="clearfix"></div>
@@ -44,8 +43,8 @@ class ProductList extends React.Component {
      */
     render() {
         let productList = this.props.product_list;
-        let products = productList.map((product, index) => {
-            return this.productDetail(index, product);
+        let products = productList.map((product) => {
+            return this.productDetail( product);
         });
 
         return (

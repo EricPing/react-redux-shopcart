@@ -1,3 +1,4 @@
+let webpack = require('webpack');
 module.exports = {
     entry: './src/app.jsx',
     output: {
@@ -7,6 +8,12 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+           $: "jquery",
+           jQuery: "jquery"
+       })
+    ],
     module: {
         loaders: [
             {

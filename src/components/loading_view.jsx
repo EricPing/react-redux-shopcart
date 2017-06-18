@@ -5,7 +5,6 @@ import React from 'react';
 class LoadingView extends React.Component {
     /**
      * @return {component}
-     * @param {object} product
      */
     render() {
         return (

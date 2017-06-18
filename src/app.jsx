@@ -1,6 +1,7 @@
-require('bootstrap/dist/css/bootstrap.css');
-require('font-awesome/css/font-awesome.css');
-require('./stylesheets/app.scss');
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+import './stylesheets/app.scss';
+import 'bootstrap/dist/js/bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/app';
