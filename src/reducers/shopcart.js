@@ -54,7 +54,7 @@ export default function shopcart(state = initialState, action) {
     }
 
     state.sum = 0;
-    for (var i in state.shopcart_list) {
+    for (let i = 0; i < state.shopcart_list.length; i++) {
         let product = state.shopcart_list[i].product;
         state.shopcart_list[i].total = (product.price - product.discount) * state.shopcart_list[i].amount;
         state.sum += state.shopcart_list[i].total;

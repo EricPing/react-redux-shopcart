@@ -41,15 +41,15 @@ class ShopCart extends React.Component {
     /**
      * @return {component}
      */
-    render() {        
+    render() {
         let shopcartList = this.props.shopcart_list
                             .map((item, index) => this.itemDetail(index, item.product, item.amount, item.total));
-        
-        let render_child = null;
+
+        let renderChild = null;
         if (this.props.is_loading) {
-            render_child= <LoadingView/>            
+            renderChild= <LoadingView/>;
         } else {
-            render_child = (
+            renderChild = (
                 <table className="table">
                     <thead>
                         <tr>
@@ -85,7 +85,7 @@ class ShopCart extends React.Component {
         return (
             <div>
                 <h2>購物車</h2>
-                {render_child}
+                {renderChild}
             </div>
         );
     }
@@ -93,6 +93,7 @@ class ShopCart extends React.Component {
 
 ShopCart.propTypes = {
     actions: PropTypes.object.isRequired,
+    sum: PropTypes.number.isRequired,
     shopcart_list: PropTypes.array.isRequired,
     is_loading: PropTypes.bool.isRequired,
 };

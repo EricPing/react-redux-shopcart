@@ -3,6 +3,10 @@ import React from 'react';
  * @return {component} The component of product list
  */
 class LoadingView extends React.Component {
+    /**
+     * @return {component}
+     * @param {object} product
+     */
     render() {
         return (
             <div className="loading">
@@ -13,4 +17,4 @@ class LoadingView extends React.Component {
     }
 }
 
-export default LoadingView
+export default LoadingView;
