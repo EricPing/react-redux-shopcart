@@ -16,6 +16,7 @@ let initialState = {
  * @return {function} The reducer of product
  */
 export default function shopcart(state = initialState, action) {
+    console.log(action);
     switch (action.type) {
         case GETTING_SHOPCART_LIST:
             state = initialState;
@@ -27,19 +28,30 @@ export default function shopcart(state = initialState, action) {
             };
             break;
         case ADDING_TO_SHOPCART:
-            state = {
-                ...initialState,
-                is_loading: true,
-            };
+            state = {...state};
+            state.is_loading = true;
             break;
         case ADDED_TO_SHOPCART:
-            state.shopcart_list.push(...action.data);
+            state = {...state};
+            state.shopcart_list.push({
+                product: action.product,
+                amount: action.amount,
+                total: (action.product.price-action.product.discount) * action.amount,
+            });
+
             state.is_loading = false;
             break;
         case UPDATE_AMOUNT_TO_SHOPCART:
-            state.shopcart_list[action.index].amount = action.amount;
+            state = {...state};
+            let item = state.shopcart_list[action.index];
+            state.shopcart_list[action.index] = {
+                ...item,
+                amount: action.amount,
+                total: ((item.product.price - item.product.discount) * action.amount),
+            };
             break;
         case DELETE_FROM_SHOPCART:
+            state = {...state};
             state.shopcart_list.splice(action.index, 1);
             break;
     }

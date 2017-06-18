@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoadingView from './loading_view';
 /**
  * @return {component} The component of shopcart
  */
 class ShopCart extends React.Component {
      /**
      * @return {component}
+     * @param {int} index
      * @param {object} product
      * @param {int} amount
+     * @param {int} total
      */
-    itemDetail(product, amount) {
+    itemDetail(index, product, amount, total) {
         return (
-            <tr>
+            <tr key={index}>
                 <td>1</td>
                 <td>{product.title}</td>
                 <td>
-                    <select value={amount.toString()} className="form-control">
+                    <select value={amount.toString()} className="form-control"
+                        onChange={(e) => this.props.actions.updateAmountToShopcart(index, parseInt(e.target.value))}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -23,8 +27,8 @@ class ShopCart extends React.Component {
                         <option value="5">5</option>
                     </select>
                 </td>
-                <td>{amount}</td>
-                <td>{(product.price - product.discount) * amount}</td>
+                <td>{product.price - product.discount}</td>
+                <td>{total}</td>
                 <td>
                     <button className="btn btn-danger">
                         <i className="fa fa-times" aria-hidden="true"></i> 刪除
@@ -38,16 +42,20 @@ class ShopCart extends React.Component {
      * @return {component}
      */
     render() {
+        console.log(this.props.shopcart_list);
         let sum = 0;
-        let shopcartList = this.props.shopcart_list.map((item) => itemDetail(item.product, item.amount));
+        let shopcartList = this.props.shopcart_list
+                            .map((item, index) => this.itemDetail(index, item.product, item.amount, item.total));
         for (let i = 0; i < this.props.shopcart_list.length; i++) {
             let item = this.props.shopcart_list[i];
-            sum += (item.product.price - product.discount) * item.amount;
+            sum += item.total;
         }
 
-        return (
-            <div>
-                <h2>購物車</h2>
+        let render_child = null;
+        if (this.props.is_loading) {
+            render_child= <LoadingView/>            
+        } else {
+            render_child = (
                 <table className="table">
                     <thead>
                         <tr>
@@ -77,12 +85,20 @@ class ShopCart extends React.Component {
                         {shopcartList}
                     </tbody>
                 </table>
+            );
+        }
+
+        return (
+            <div>
+                <h2>購物車</h2>
+                {render_child}
             </div>
         );
     }
 }
 
 ShopCart.propTypes = {
+    actions: PropTypes.object.isRequired,
     shopcart_list: PropTypes.array.isRequired,
     is_loading: PropTypes.bool.isRequired,
 };

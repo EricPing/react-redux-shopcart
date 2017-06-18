@@ -27,10 +27,10 @@ class App extends React.Component {
                 <h1>購物車</h1>
                 <div className="row">
                     <div className="col-md-6">
-                        <ProductList {...this.props.productStore}/>
+                        <ProductList actions={this.props.actions} {...this.props.productStore}/>
                     </div>
                     <div className="col-md-6">
-                        <ShopCart {...this.props.shopcartStore}/>
+                        <ShopCart actions={this.props.actions} {...this.props.shopcartStore}/>
                     </div>
                 </div>
             </div>
