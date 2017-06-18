@@ -16,7 +16,6 @@ let initialState = {
  * @return {function} The reducer of product
  */
 export default function shopcart(state = initialState, action) {
-    console.log(action);
     switch (action.type) {
         case GETTING_SHOPCART_LIST:
             state = initialState;
@@ -36,7 +35,6 @@ export default function shopcart(state = initialState, action) {
             state.shopcart_list.push({
                 product: action.product,
                 amount: action.amount,
-                total: (action.product.price-action.product.discount) * action.amount,
             });
 
             state.is_loading = false;
@@ -47,13 +45,19 @@ export default function shopcart(state = initialState, action) {
             state.shopcart_list[action.index] = {
                 ...item,
                 amount: action.amount,
-                total: ((item.product.price - item.product.discount) * action.amount),
             };
             break;
         case DELETE_FROM_SHOPCART:
             state = {...state};
             state.shopcart_list.splice(action.index, 1);
             break;
+    }
+
+    state.sum = 0;
+    for (var i in state.shopcart_list) {
+        let product = state.shopcart_list[i].product;
+        state.shopcart_list[i].total = (product.price - product.discount) * state.shopcart_list[i].amount;
+        state.sum += state.shopcart_list[i].total;
     }
 
     return state;

@@ -41,16 +41,10 @@ class ShopCart extends React.Component {
     /**
      * @return {component}
      */
-    render() {
-        console.log(this.props.shopcart_list);
-        let sum = 0;
+    render() {        
         let shopcartList = this.props.shopcart_list
                             .map((item, index) => this.itemDetail(index, item.product, item.amount, item.total));
-        for (let i = 0; i < this.props.shopcart_list.length; i++) {
-            let item = this.props.shopcart_list[i];
-            sum += item.total;
-        }
-
+        
         let render_child = null;
         if (this.props.is_loading) {
             render_child= <LoadingView/>            
@@ -73,7 +67,7 @@ class ShopCart extends React.Component {
                             <td></td>
                             <td></td>
                             <td><b>總計</b></td>
-                            <td>{sum}</td>
+                            <td>{this.props.sum}</td>
                             <td>
                                 <button className="btn btn-success">
                                     <i className="fa fa-shopping-cart" aria-hidden="true"></i> 結帳
