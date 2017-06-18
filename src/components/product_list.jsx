@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoadingView from './loading_view';
+import classnames from 'classnames';
 /**
  * @return {component} The component of product list
  */
 class ProductList extends React.Component {
     /**
      * @return {component}
-     * @param {int} id
-     * @param {string} title
-     * @param {string} img
-     * @param {float} price
-     * @param {float} discount
+     * @param {object} product
      */
-    productDetail(id, title, img, price, discount) {
+    productDetail(product) {
+        let {id, title, img, price, discount} = product;
+        let isDisabled = product.is_disabled;
+        let options = {};
+        if (isDisabled) {
+            options['disabled'] = 'disabled';
+        }
+
         return (
             <div key={id} className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div className="panel panel-primary">
@@ -22,7 +27,8 @@ class ProductList extends React.Component {
                     </div>
                     <div className="panel-footer">
                         <p>{`原價:$${price}，特價$${price-discount}`}</p>
-                        <button className="btn btn-default pull-right">
+                        <button className={classnames('btn', 'btn-default', ' pull-right')} {...options}
+                            onClick={() => this.props.actions.addToShopcart(product.id, product, 1)}>
                             <i className="fa fa-plus" aria-hidden="true"></i> 加入
                         </button>
                         <div className="clearfix"></div>
@@ -37,11 +43,9 @@ class ProductList extends React.Component {
      */
     render() {
         let productList = this.props.product_list;
-        let products = productList.map((item) => {
-            let {id, title, img, price, discount} = item;
-            return this.productDetail(id, title, img, price, discount);
+        let products = productList.map((product) => {
+            return this.productDetail( product);
         });
-        
 
         return (
             <div>
@@ -50,10 +54,7 @@ class ProductList extends React.Component {
                     {(() => {
                         if (this.props.is_loading) {
                             return (
-                                <div id="loading">
-                                    <h3>Loading...</h3>
-                                    <i className="fa fa-circle-o-notch fa-spin fa-5x fa-fw"></i>
-                                </div>
+                                <LoadingView/>
                             );
                         }
 
@@ -66,8 +67,9 @@ class ProductList extends React.Component {
 }
 
 ProductList.propTypes = {
-    product_list: PropTypes.array,
-    is_loading: PropTypes.bool
+    actions: PropTypes.object.isRequired,
+    product_list: PropTypes.array.isRequired,
+    is_loading: PropTypes.bool.isRequired,
 };
 
 export default ProductList;

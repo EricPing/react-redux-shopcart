@@ -1,9 +1,10 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {GETTING_PRODUCT_LIST, GET_PRODUCT_LIST_SUCCESS} from '../constants/actionTypes';
 import ProductList from '../components/product_list';
 import ShopCart from '../components/shop_cart';
+import actions from '../actions';
 
 /**
  * @return {compoment} The main compoment of App.
@@ -13,7 +14,8 @@ class App extends React.Component {
      *
      */
     componentDidMount() {
-        this.props.getProducts();
+        this.props.actions.getProducts();
+        this.props.actions.getShopList();
     }
 
     /**
@@ -25,10 +27,10 @@ class App extends React.Component {
                 <h1>購物車</h1>
                 <div className="row">
                     <div className="col-md-6">
-                        <ProductList {...this.props.productStore}/>
+                        <ProductList actions={this.props.actions} {...this.props.productStore}/>
                     </div>
                     <div className="col-md-6">
-                        <ShopCart/>
+                        <ShopCart actions={this.props.actions} {...this.props.shopcartStore}/>
                     </div>
                 </div>
             </div>
@@ -37,8 +39,9 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    productStore: PropTypes.object,
-    getProducts: PropTypes.func,
+    shopcartStore: PropTypes.object.isRequired,
+    productStore: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
 };
 
 /**
@@ -55,17 +58,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    getProducts: () => {
-        dispatch({type: GETTING_PRODUCT_LIST});
-        setTimeout(()=>{
-            fetch('/products.json')
-                .then((response) => response.json())
-                .then((productList) => {
-                    return dispatch({type: GET_PRODUCT_LIST_SUCCESS, product_list: productList});
-                });
-        }, 1500);
-        
-    },
+    actions: bindActionCreators(actions, dispatch),
+    dispatch,
   };
 }
 

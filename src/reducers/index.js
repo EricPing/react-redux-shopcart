@@ -1,7 +1,10 @@
-import productData from './productData';
+import product from './product';
+import shopcart from './shopcart';
+
 import {combineReducers} from 'redux';
 export default combineReducers(
     {
-        productStore: productData,
+        productStore: product,
+        shopcartStore: shopcart,
     }
 );
