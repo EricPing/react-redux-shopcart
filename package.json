@@ -45,5 +45,9 @@
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",
     "redux-thunk": "^2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EricPing/react-redux-shopcart.git"
   }
 }
