@@ -8,7 +8,7 @@ import AppContainer from './containers/app';
 import {bindActionCreators, createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import {Provider} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import { routerReducer, routerMiddleware, push } from 'react-router-redux';
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router';
@@ -33,9 +33,10 @@ const App = connect((state) =>{
   };
 })(AppContainer)
 
-
 ReactDOM.render(
 <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+        <App />
+    </ConnectedRouter>
 </Provider>
 , document.getElementById('app'));
