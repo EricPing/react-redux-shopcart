@@ -5,6 +5,9 @@ module.exports = {
         path: __dirname,
         filename: './public/bundle.js',
     },
+    devServer: {
+        historyApiFallback: true
+    },
     resolve: {
         extensions: ['.js', '.jsx'],
     },
