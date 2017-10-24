@@ -42,7 +42,7 @@ class ProductList extends React.Component {
      * @return {component}
      */
     render() {
-        let productList = this.props.product_list;
+        let productList = this.props.store.product_list;
         let products = productList.map((product) => {
             return this.productDetail( product);
         });
@@ -52,7 +52,7 @@ class ProductList extends React.Component {
                 <h2>商品</h2>
                 <div className="row" id="product-list">
                     {(() => {
-                        if (this.props.is_loading) {
+                        if (this.props.store.is_loading) {
                             return (
                                 <LoadingView/>
                             );
@@ -68,8 +68,10 @@ class ProductList extends React.Component {
 
 ProductList.propTypes = {
     actions: PropTypes.object.isRequired,
-    product_list: PropTypes.array.isRequired,
-    is_loading: PropTypes.bool.isRequired,
+    store: PropTypes.shape({
+        product_list: PropTypes.array.isRequired,
+        is_loading: PropTypes.bool.isRequired,
+    })
 };
 
 export default ProductList;
