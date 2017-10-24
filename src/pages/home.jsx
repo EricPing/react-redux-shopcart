@@ -11,8 +11,16 @@ class HomePage extends React.Component {
      *
      */
     componentDidMount() {
-        this.props.actions.getProducts();
-        this.props.actions.getShopList();
+        if (this.props.productStore.product_list.length == 0) {
+           this.props.actions.getProducts();
+        }
+
+        if (this.props.shopcartStore.shopcart_list.length == 0) {
+           this.props.actions.getShopList();
+        }
+        
+        // if (this.props.product_list.product_list.count ==0 ) {
+        // }
     }
 
     /**
@@ -25,10 +33,10 @@ class HomePage extends React.Component {
                 <Link to="/intro">說明</Link>
                 <div className="row">
                     <div className="col-md-6">
-                        <ProductList actions={this.props.actions} {...this.props.productStore}/>
+                        <ProductList actions={this.props.actions} store={this.props.productStore}/>
                     </div>
                     <div className="col-md-6">
-                        <ShopCart actions={this.props.actions} {...this.props.shopcartStore}/>
+                        <ShopCart actions={this.props.actions} store={this.props.shopcartStore}/>
                     </div>
                 </div>
             </div>

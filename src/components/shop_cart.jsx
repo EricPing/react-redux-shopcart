@@ -82,11 +82,11 @@ class ShopCart extends React.Component {
      * @return {component}
      */
     render() {
-        let shopcartList = this.props.shopcart_list
+        let shopcartList = this.props.store.shopcart_list
                             .map((item, index) => this.itemDetail(index, item.product, item.amount, item.total));
 
         let renderChild = null;
-        if (this.props.is_loading) {
+        if (this.props.store.is_loading) {
             renderChild= <LoadingView/>;
         } else {
             renderChild = (
@@ -107,7 +107,7 @@ class ShopCart extends React.Component {
                             <td></td>
                             <td></td>
                             <td><b>總計</b></td>
-                            <td>{this.props.sum}</td>
+                            <td>{this.props.store.sum}</td>
                             <td>
                                 <button className="btn btn-success" onClick={() => this.handleCheckout()}>
                                     <i className="fa fa-shopping-cart" aria-hidden="true"></i> 結帳
@@ -134,9 +134,11 @@ class ShopCart extends React.Component {
 
 ShopCart.propTypes = {
     actions: PropTypes.object.isRequired,
-    sum: PropTypes.number.isRequired,
-    shopcart_list: PropTypes.array.isRequired,
-    is_loading: PropTypes.bool.isRequired,
+    store: PropTypes.shape({
+        sum: PropTypes.number.isRequired,
+        shopcart_list: PropTypes.array.isRequired,
+        is_loading: PropTypes.bool.isRequired,
+    })
 };
 
 export default ShopCart;

@@ -21,6 +21,7 @@ class IntroPage extends React.Component {
             <div className="container">
                 <h1>說明</h1>
                 <p>這只是個練習用購物車</p>
+                <p>購物車金額: {this.props.shopcartStore.sum}</p>
                 <Link to="/">返回購物車</Link>
             </div>
         );
