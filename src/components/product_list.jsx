@@ -71,7 +71,7 @@ ProductList.propTypes = {
     store: PropTypes.shape({
         product_list: PropTypes.array.isRequired,
         is_loading: PropTypes.bool.isRequired,
-    })
+    }),
 };
 
 export default ProductList;

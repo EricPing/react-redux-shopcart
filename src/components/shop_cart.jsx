@@ -138,7 +138,7 @@ ShopCart.propTypes = {
         sum: PropTypes.number.isRequired,
         shopcart_list: PropTypes.array.isRequired,
         is_loading: PropTypes.bool.isRequired,
-    })
+    }),
 };
 
 export default ShopCart;

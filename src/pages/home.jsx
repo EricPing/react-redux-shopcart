@@ -18,7 +18,7 @@ class HomePage extends React.Component {
         if (this.props.shopcartStore.shopcart_list.length == 0) {
            this.props.actions.getShopList();
         }
-        
+
         // if (this.props.product_list.product_list.count ==0 ) {
         // }
     }
