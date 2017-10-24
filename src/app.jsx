@@ -5,17 +5,12 @@ import 'bootstrap/dist/js/bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './containers/app';
-import {bindActionCreators, createStore, applyMiddleware, combineReducers, compose} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
-
-import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router';
-
+import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import actions from './actions';
 
 const history = createHistory();
 
@@ -24,19 +19,10 @@ const store = createStore(
     applyMiddleware(routerMiddleware(history), thunk),
 );
 
-const App = connect((state) =>{
-  return state;
-}, (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch),
-    dispatch,
-  };
-})(AppContainer)
-
 ReactDOM.render(
 <Provider store={store}>
     <ConnectedRouter history={history}>
-        <App />
+        <AppContainer />
     </ConnectedRouter>
 </Provider>
 , document.getElementById('app'));
