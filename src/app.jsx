@@ -4,15 +4,25 @@ import './stylesheets/app.scss';
 import 'bootstrap/dist/js/bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/app';
-import {createStore, applyMiddleware, compose} from 'redux';
+import AppContainer from './containers/app';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import createHistory from 'history/createBrowserHistory';
+import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const store = compose(applyMiddleware(thunk))(createStore)(reducers);
+const history = createHistory();
+
+const store = createStore(
+    combineReducers({routerReducer, ...reducers}),
+    applyMiddleware(routerMiddleware(history), thunk),
+);
+
 ReactDOM.render(
 <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+        <AppContainer />
+    </ConnectedRouter>
 </Provider>
 , document.getElementById('app'));

@@ -1,21 +1,41 @@
 import React from 'react';
+import HomePage from '../pages/home';
+import IntroPage from '../pages/intro';
 import {bindActionCreators} from 'redux';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import ProductList from '../components/product_list';
-import ShopCart from '../components/shop_cart';
+import {Route, Switch} from 'react-router';
 import actions from '../actions';
 
+const ConnectedSwitch = connect((state) => ({
+    location: state.location,
+}))(Switch);
+
 /**
- * @return {compoment} The main compoment of App.
+ * @return {component} connect with actions & store;
+ * @param {component} item
  */
-class App extends React.Component {
+function connectDispatch(item) {
+    return connect((state) =>{
+      return state;
+    }, (dispatch) => {
+      return {
+        actions: bindActionCreators(actions, dispatch),
+        dispatch,
+      };
+    })(item);
+}
+
+const Home = connectDispatch(HomePage);
+const Intro = connectDispatch(IntroPage);
+
+/**
+ * @return {compoment} The main compoment of AppContainer.
+ */
+class AppContainer extends React.Component {
     /**
      *
      */
     componentDidMount() {
-        this.props.actions.getProducts();
-        this.props.actions.getShopList();
     }
 
     /**
@@ -24,43 +44,13 @@ class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>購物車</h1>
-                <div className="row">
-                    <div className="col-md-6">
-                        <ProductList actions={this.props.actions} {...this.props.productStore}/>
-                    </div>
-                    <div className="col-md-6">
-                        <ShopCart actions={this.props.actions} {...this.props.shopcartStore}/>
-                    </div>
-                </div>
+                <ConnectedSwitch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/intro" component={Intro} />
+                </ConnectedSwitch>
             </div>
         );
     }
 }
 
-App.propTypes = {
-    shopcartStore: PropTypes.object.isRequired,
-    productStore: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired,
-};
-
-/**
- * @param {object} state
- * @return {object}
- */
-function mapStateToProps(state) {
-  return state;
-}
-
-/**
- * @param {function} dispatch
- * @return {object} object
- */
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch),
-    dispatch,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default AppContainer;
