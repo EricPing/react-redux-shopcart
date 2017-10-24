@@ -44,23 +44,4 @@ App.propTypes = {
     actions: PropTypes.object.isRequired,
 };
 
-/**
- * @param {object} state
- * @return {object}
- */
-function mapStateToProps(state) {
-  return state;
-}
-
-/**
- * @param {function} dispatch
- * @return {object} object
- */
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch),
-    dispatch,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
