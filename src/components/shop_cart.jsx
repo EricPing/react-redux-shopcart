@@ -53,6 +53,7 @@ class ShopCart extends React.Component {
      * @param {int} total
      */
     itemDetail(index, product, amount, total) {
+        const fontWeight = 'bolder';
         return (
             <tr key={index}>
                 <td>{index + 1}</td>
@@ -67,8 +68,15 @@ class ShopCart extends React.Component {
                         <option value="5">5</option>
                     </select>
                 </td>
-                <td>{product.price - product.discount}</td>
-                <td>{total}</td>
+                <td>
+                 <style jsx>{`
+                  p {
+                    font-weight: ${fontWeight};
+                  }
+                `}</style>
+                    <p>{product.price - product.discount}</p>
+                </td>
+                <td><p>{total}</p></td>
                 <td>
                     <button className="btn btn-danger" onClick={()=> this.handleDelete(product.id, index)}>
                         <i className="fa fa-times" aria-hidden="true"></i> 刪除
