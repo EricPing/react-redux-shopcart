@@ -23,6 +23,9 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ['env', 'stage-3', 'react'],
+                    plugins: [
+                        "styled-jsx/babel"
+                    ]
                 },
                 test: /\.(js|jsx)?$/,
                 exclude: /(node_modules|bower_components)/,
