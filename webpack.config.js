@@ -8,6 +8,24 @@ const DEVELOPMENT = 'development'
 let mode = process.env.NODE_ENV ? process.env.NODE_ENV : DEVELOPMENT;
 console.log(colors.red(`CURRENT MODE: ${mode.toUpperCase()}`));
 
+var plugins = [
+    new webpack.ProvidePlugin({
+       $: "jquery",
+       jQuery: "jquery"
+    }),
+    new HtmlWebpackPlugin({
+        template: 'src/index.html'
+    })
+];
+
+if (mode == PRODUCTION) {
+    plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true
+        })
+    );
+}
+
 module.exports = {
     entry: './src/app.js',
     output: {
@@ -20,18 +38,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-           $: "jquery",
-           jQuery: "jquery"
-        }),
-        new HtmlWebpackPlugin({
-            template: 'src/index.html'
-        }),
-        mode == PRODUCTION? new webpack.optimize.UglifyJsPlugin({
-            minimize: true
-        }) : null
-    ],
+    plugins: plugins,
     module: {
         loaders: [
             {
