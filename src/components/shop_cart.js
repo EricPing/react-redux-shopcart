@@ -154,7 +154,7 @@ ShopCart.propTypes = {
 };
 
 
-const mapStateToProps = (props) => ({ store: props.shopcartStore})
+const mapStateToProps = ({shopcartStore}) => ({ store: shopcartStore})
 
 const mapDispatchToProps = (dispatch) => {
   return {

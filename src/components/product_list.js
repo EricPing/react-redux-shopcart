@@ -93,7 +93,7 @@ ProductList.propTypes = {
     }),
 };
 
-const mapStateToProps = (props) => ({ store: props.productStore})
+const mapStateToProps = ({productStore}) => ({ store: productStore})
 
 const mapDispatchToProps = (dispatch) => {
   return {
