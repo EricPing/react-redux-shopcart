@@ -317,3 +317,5 @@ fabric.properties
 package-lock.json
 
 # End of https://www.gitignore.io/api/node,webstorm,reactnative,visualstudiocode
+
+dist/
