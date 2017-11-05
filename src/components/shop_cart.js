@@ -2,10 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingView from './loading_view';
 import ModalView from './modal_view';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {deleteFromShopcart, updateAmountToShopcart, getShopList} from '../actions/shopcart';
 /**
  * @return {component} The component of shopcart
  */
 class ShopCart extends React.Component {
+    /**
+     *
+     */
+    componentDidMount() {
+        if (this.props.store.shopcart_list.length == 0) {
+           this.props.getShopList();
+        }
+    }
     /**
      * 結帳事件，尚未實作
      */
@@ -29,7 +40,7 @@ class ShopCart extends React.Component {
     handleDeleteCallback(result) {
         this.setState({show_delete_check: false});
         if (result) {
-            this.props.actions.deleteFromShopcart(this.state.id, this.state.index);
+            this.props.deleteFromShopcart(this.state.id, this.state.index);
         }
     }
 
@@ -60,7 +71,7 @@ class ShopCart extends React.Component {
                 <td>{product.title}</td>
                 <td>
                     <select value={amount.toString()} className="form-control"
-                        onChange={(e) => this.props.actions.updateAmountToShopcart(index, parseInt(e.target.value))}>
+                        onChange={(e) => this.props.updateAmountToShopcart(index, parseInt(e.target.value))}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -141,7 +152,9 @@ class ShopCart extends React.Component {
 }
 
 ShopCart.propTypes = {
-    actions: PropTypes.object.isRequired,
+    getShopList: PropTypes.func.isRequired,
+    deleteFromShopcart: PropTypes.func.isRequired,
+    updateAmountToShopcart: PropTypes.func.isRequired,
     store: PropTypes.shape({
         sum: PropTypes.number.isRequired,
         shopcart_list: PropTypes.array.isRequired,
@@ -149,4 +162,16 @@ ShopCart.propTypes = {
     }),
 };
 
-export default ShopCart;
+
+const mapStateToProps = ({shopcartStore}) => ({store: shopcartStore});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteFromShopcart: bindActionCreators(deleteFromShopcart, dispatch),
+    updateAmountToShopcart: bindActionCreators(updateAmountToShopcart, dispatch),
+    getShopList: bindActionCreators(getShopList, dispatch),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopCart);
