@@ -1,5 +1,13 @@
 let webpack = require('webpack');
+let colors = require('colors/safe');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const PRODUCTION = 'production';
+const DEVELOPMENT = 'development'
+
+let mode = process.env.NODE_ENV ? process.env.NODE_ENV : DEVELOPMENT;
+console.log(colors.red(`CURRENT MODE: ${mode.toUpperCase()}`));
+
 module.exports = {
     entry: './src/app.js',
     output: {
@@ -19,7 +27,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
-        })
+        }),
+        mode == PRODUCTION? new webpack.optimize.UglifyJsPlugin({
+            minimize: true
+        }) : null
     ],
     module: {
         loaders: [
