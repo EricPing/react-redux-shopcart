@@ -1,9 +1,10 @@
 let webpack = require('webpack');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/app.js',
     output: {
-        path: __dirname,
-        filename: './public/bundle.js',
+        path: __dirname + '/dist',
+        filename: './bundle.js',
     },
     devServer: {
         historyApiFallback: true
@@ -15,7 +16,10 @@ module.exports = {
         new webpack.ProvidePlugin({
            $: "jquery",
            jQuery: "jquery"
-       })
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
+        })
     ],
     module: {
         loaders: [
@@ -41,7 +45,7 @@ module.exports = {
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 loaders: ['file-loader'],
-            },
+            }
         ],
     },
 };
