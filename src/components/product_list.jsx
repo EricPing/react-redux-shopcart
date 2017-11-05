@@ -26,6 +26,16 @@ class ProductList extends React.Component {
                         <img src={img} className="img-responsive img-rounded"/>
                     </div>
                     <div className="panel-footer">
+                        <style jsx>{`
+                            p {
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                line-height: normal;
+                                display: inline;
+                                padding-top: 8px;
+                            }
+                        `}</style>
                         <p>{`原價:$${price}，特價$${price-discount}`}</p>
                         <button className={classnames('btn', 'btn-default', ' pull-right')} {...options}
                             onClick={() => this.props.actions.addToShopcart(product.id, product, 1)}>
@@ -50,7 +60,13 @@ class ProductList extends React.Component {
         return (
             <div>
                 <h2>商品</h2>
-                <div className="row" id="product-list">
+                <div className="row">
+                    <style jsx>{`
+                        #product-list { 
+                            height:90vh;
+                            overflow-y: scroll;
+                        }
+                    `}</style>
                     {(() => {
                         if (this.props.store.is_loading) {
                             return (
