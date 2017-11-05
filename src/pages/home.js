@@ -36,7 +36,7 @@ class HomePage extends React.Component {
                         <ProductList/>
                     </div>
                     <div className="col-md-6">
-                        <ShopCart actions={this.props.actions} store={this.props.shopcartStore}/>
+                        <ShopCart/>
                     </div>
                 </div>
             </div>
