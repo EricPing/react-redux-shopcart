@@ -44,6 +44,7 @@
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "jquery": "^3.2.1",
+    "next": "^4.1.4",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
