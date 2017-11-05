@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingView from './loading_view';
 import classnames from 'classnames';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { addToShopcart } from '../actions/shopcart'
 /**
  * @return {component} The component of product list
  */
@@ -38,7 +41,7 @@ class ProductList extends React.Component {
                         `}</style>
                         <p>{`原價:$${price}，特價$${price-discount}`}</p>
                         <button className={classnames('btn', 'btn-default', ' pull-right')} {...options}
-                            onClick={() => this.props.actions.addToShopcart(product.id, product, 1)}>
+                            onClick={() => this.props.addToShopcart(product.id, product, 1)}>
                             <i className="fa fa-plus" aria-hidden="true"></i> 加入
                         </button>
                         <div className="clearfix"></div>
@@ -54,7 +57,7 @@ class ProductList extends React.Component {
     render() {
         let productList = this.props.store.product_list;
         let products = productList.map((product) => {
-            return this.productDetail( product);
+            return this.productDetail(product);
         });
 
         return (
@@ -83,11 +86,20 @@ class ProductList extends React.Component {
 }
 
 ProductList.propTypes = {
-    actions: PropTypes.object.isRequired,
+    addToShopcart: PropTypes.func.isRequired,
     store: PropTypes.shape({
         product_list: PropTypes.array.isRequired,
         is_loading: PropTypes.bool.isRequired,
     }),
 };
 
-export default ProductList;
+const mapStateToProps = (props) => ({ store: props.productStore})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToShopcart: bindActionCreators(addToShopcart, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

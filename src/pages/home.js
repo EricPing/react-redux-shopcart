@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                 <Link to="/intro">說明</Link>
                 <div className="row">
                     <div className="col-md-6">
-                        <ProductList actions={this.props.actions} store={this.props.productStore}/>
+                        <ProductList/>
                     </div>
                     <div className="col-md-6">
                         <ShopCart actions={this.props.actions} store={this.props.shopcartStore}/>
