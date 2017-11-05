@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ProductList from '../components/product_list';
 import ShopCart from '../components/shop_cart';
 import {Link} from 'react-router-dom';
@@ -7,22 +6,6 @@ import {Link} from 'react-router-dom';
  * @return {compoment} The main compoment of HomePage.
  */
 class HomePage extends React.Component {
-    /**
-     *
-     */
-    componentDidMount() {
-        if (this.props.productStore.product_list.length == 0) {
-           this.props.actions.getProducts();
-        }
-
-        if (this.props.shopcartStore.shopcart_list.length == 0) {
-           this.props.actions.getShopList();
-        }
-
-        // if (this.props.product_list.product_list.count ==0 ) {
-        // }
-    }
-
     /**
      * @return {component}
      */
@@ -43,11 +26,5 @@ class HomePage extends React.Component {
         );
     }
 }
-
-HomePage.propTypes = {
-    shopcartStore: PropTypes.object.isRequired,
-    productStore: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired,
-};
 
 export default HomePage;

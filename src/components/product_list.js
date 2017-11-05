@@ -2,13 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingView from './loading_view';
 import classnames from 'classnames';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { addToShopcart } from '../actions/shopcart'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {getProducts} from '../actions/product';
+import {addToShopcart} from '../actions/shopcart';
 /**
  * @return {component} The component of product list
  */
 class ProductList extends React.Component {
+    /**
+     *
+     */
+    componentDidMount() {
+        if (this.props.store.product_list.length == 0) {
+           this.props.getProducts();
+        }
+    }
+
     /**
      * @return {component}
      * @param {object} product
@@ -87,19 +97,21 @@ class ProductList extends React.Component {
 
 ProductList.propTypes = {
     addToShopcart: PropTypes.func.isRequired,
+    getProducts: PropTypes.func.isRequired,
     store: PropTypes.shape({
         product_list: PropTypes.array.isRequired,
         is_loading: PropTypes.bool.isRequired,
     }),
 };
 
-const mapStateToProps = ({productStore}) => ({ store: productStore})
+const mapStateToProps = ({productStore}) => ({store: productStore});
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToShopcart: bindActionCreators(addToShopcart, dispatch)
-  }
-}
+    addToShopcart: bindActionCreators(addToShopcart, dispatch),
+    getProducts: bindActionCreators(getProducts, dispatch),
+  };
+};
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
