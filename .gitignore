@@ -313,9 +313,6 @@ fabric.properties
 
 # Sonarlint plugin
 .idea/sonarlint
-
-package-lock.json
-
 # End of https://www.gitignore.io/api/node,webstorm,reactnative,visualstudiocode
 
 dist/
