@@ -9,22 +9,31 @@ class ModalView extends React.Component {
      */
     componentDidMount() {
         $(this.modal).modal('show');
-        // $(node).on('hidden.bs.modal', this.props.callback(false));
+    }
+
+    /**
+     *
+     * @param {boolean} result
+     */
+    hideModal(result) {
+      let {callback} = this.props;
+      $(this.modal).on('hidden.bs.modal', () => callback(result));
+      $(this.modal).modal('hide');
     }
 
     /**
      * @return {component}
      */
     render() {
-        let {title, content, callback} = this.props;
+        let {title, content} = this.props;
         return (
           <div className="modal fade" ref={(modal) => this.modal = modal}>
-            <div className="modal-dialog modal-sm">
+            <div className="modal-dialog modal-sm modal-dialog-centered" role="document">
               <div className="modal-content">
                 <div className="modal-header">
                   <h4 className="modal-title">{title}</h4>
-                  <button type="button" className="close" onClick={() => callback(false)}
-                     data-dismiss="modal" aria-label="Close">
+                  <button type="button" className="close" onClick={() => this.hideModal(false)}
+                     aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -33,9 +42,9 @@ class ModalView extends React.Component {
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-primary"
-                         data-dismiss="modal" onClick={() => callback(true)}>是</button>
+                         onClick={() => this.hideModal(true)}>是</button>
                   <button type="button" className="btn btn-secondary"
-                         data-dismiss="modal" onClick={() => callback(false)}>否</button>
+                         onClick={() => this.hideModal(false)}>否</button>
                 </div>
               </div>
             </div>
