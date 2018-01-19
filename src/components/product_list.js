@@ -36,7 +36,7 @@ class ProductList extends React.Component {
                 <div className="panel panel-primary">
                     <div className="panel-heading">{title}</div>
                     <div className="panel-body">
-                        <img src={img} className="img-responsive img-rounded"/>
+                        <img src={img} className="img-fluid img-thumbnail"/>
                     </div>
                     <div className="panel-footer">
                         <style jsx>{`
@@ -50,7 +50,7 @@ class ProductList extends React.Component {
                             }
                         `}</style>
                         <p>{`原價:$${price}，特價$${price-discount}`}</p>
-                        <button className={classnames('btn', 'btn-default', ' pull-right')} {...options}
+                        <button className={classnames('btn', 'btn-secondary', ' pull-right')} {...options}
                             onClick={() => this.props.addToShopcart(product.id, product, 1)}>
                             <i className="fa fa-plus" aria-hidden="true"></i> 加入
                         </button>
