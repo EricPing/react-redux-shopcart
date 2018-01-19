@@ -34,7 +34,7 @@ class ModalView extends React.Component {
                 <div className="modal-footer">
                   <button type="button" className="btn btn-primary"
                          data-dismiss="modal" onClick={() => callback(true)}>是</button>
-                  <button type="button" className="btn btn-default"
+                  <button type="button" className="btn btn-secondary"
                          data-dismiss="modal" onClick={() => callback(false)}>否</button>
                 </div>
               </div>
