@@ -33,28 +33,20 @@ class ProductList extends React.Component {
 
         return (
             <div key={id} className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div className="panel panel-primary">
-                    <div className="panel-heading">{title}</div>
-                    <div className="panel-body">
-                        <img src={img} className="img-fluid img-thumbnail"/>
+                <div className="card card-outline-primary mb-3">
+                    <img src={img} className="card-img-top"/>
+                    <div className="card-block">
+                        <div className="card-title">{title}</div>
                     </div>
-                    <div className="panel-footer">
-                        <style jsx>{`
-                            p {
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                line-height: normal;
-                                display: inline;
-                                padding-top: 8px;
-                            }
-                        `}</style>
-                        <p>{`原價:$${price}，特價$${price-discount}`}</p>
-                        <button className={classnames('btn', 'btn-secondary', ' pull-right')} {...options}
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">原價 ${price}</li>
+                        <li className="list-group-item">特價 ${price-discount}</li>
+                    </ul>
+                    <div className="card-block">
+                        <button className={classnames('btn', 'btn-primary', 'float-right')} {...options}
                             onClick={() => this.props.addToShopcart(product.id, product, 1)}>
                             <i className="fa fa-plus" aria-hidden="true"></i> 加入
                         </button>
-                        <div className="clearfix"></div>
                     </div>
                 </div>
             </div>

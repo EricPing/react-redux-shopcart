@@ -16,7 +16,7 @@ class LoadingView extends React.Component {
                     }
                 `}</style>
                 <h3>Loading...</h3>
-                <i className="fa fa-circle-o-notch fa-spin fa-5x fa-fw"></i>
+                <i className="fa-3x fas fa-circle-notch fa-spin"></i>
             </div>
         );
     }
